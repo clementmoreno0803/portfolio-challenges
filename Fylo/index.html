@@ -23,11 +23,7 @@
         <div class="storage">
             <p>You've used {{storageValue}} of your storage </p>
             <div class="slidecontainer">
-                <input type="range" min="0" max="1000" v-model='storageValue' class="slider" id="myRange">
-                <div class="min_max_value">
-                    <span id="range_left">0GB</span>
-                    <span id="range_right">1000GB</span>
-                </div>
+                <input type="range" @mousemove="changeColor" :style={background:bg_color} min="0" max="1000" v-model='storageValue' class="slider" id="myRange">
             </div>
             <div class="storage_left">
                 <h2><span id="number_left">{{storageLeft}} </span> gb left</h2>
@@ -39,21 +35,20 @@
             data() {
                 return {
                     storageValue: 500,
-                    fillColor: ''
+                    bg_color: ''
                 }
             },
             computed: {
                 storageLeft() {
                     return (1000 - this.storageValue)
-                }
-            },
-            methods: {
+                },
                 changeColor() {
-                    let x = storageValue;
-                    let color = 'linear-gradient(90deg, #f5f4f4' + x + '$, rgb(209, 39, 16)' + x + '%)';
+                    let x = this.storageValue;
+                    let color = 'linear-gradient(90deg, rgba(255, 163, 153, 1)' + (x / 10) + '%, var(--primary)' + ((x / 10)) + '%';
+                    this.bg_color = color
                     console.log(color)
 
-                }
+                },
             }
         });
         app.mount('#app');
