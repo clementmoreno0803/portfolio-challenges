@@ -111,10 +111,6 @@
         border-radius: 12px;
     }
     
-    input {
-        border-radius: 50px;
-    }
-    
     .slider:hover {
         opacity: 1;
     }
