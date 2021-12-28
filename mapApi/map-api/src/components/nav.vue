@@ -11,7 +11,7 @@
       </div>
       <div id="login">
         <ul>
-          <li><a href="login">Login</a></li>
+          <li><a href="#">Login</a></li>
           <li><a href="#">Sign Up</a></li>
         </ul>
       </div>
@@ -53,19 +53,17 @@ ul li {
   margin-left: 25px;
 }
 
-#login li:last-child {
+#login li:last-child a:last-child{
   background: var(--primary);
   list-style: none;
   padding: 10px 30px;
   border-radius: 25px;
+  color:white;
 }
 a {
   font-family: "Poppins";
   font-size: 0.775em;
   color: rgb(191, 191, 191);
   text-decoration: none;
-}
-#login a:last-child{
-  color:  red;
 }
 </style>
