@@ -29,6 +29,7 @@ export default {
 nav {
   display: flex;
   align-items: center;
+  height: 100px;
 }
 #links {
   width: 95%;
@@ -44,7 +45,7 @@ nav {
 
 ul {
   display: flex;
-  padding: 0;
+  margin: 0;
   align-items: center;
 }
 ul li {

@@ -2,17 +2,24 @@
   <div class="shorten">
     <form>
       <input type="text" placeholder="Shorten a link here..." v-model="url" />
-      <div @click.prevent="postData" @click='response = !response' class="shorten_it_btn">Shorten it !</div>
+      <div
+        @click.prevent="postData"
+        @click="response = !response"
+        class="shorten_it_btn"
+      >
+        Shorten it !
+      </div>
     </form>
   </div>
-  <div class="response" v-show='response'>
-    <div class="long_link">{{url}}</div>
-    <div v-for="(address, index) in addresses" :key="index">
-      {{ address.full_short_link }}
+  <div class="response" v-show="response">
+    <div class="long_link">{{ url }}</div>
+    <div class="short_link">
+      <div v-for="(address, index) in addresses" :key="index">
+        {{ address.full_short_link }}
+      </div>
+      <div class="copy" @click='copied'>{{copy_btn}}</div>
     </div>
-    <div class="copy" v-bind="copy"> Copy</div>
   </div>
-
 </template>
 
 <script>
@@ -23,7 +30,8 @@ export default {
     return {
       addresses: [],
       url: "",
-      response: false
+      response: false,
+      copy_btn:'copy',
     };
   },
   methods: {
@@ -36,13 +44,15 @@ export default {
       console.log(this.addresses);
     },
   },
+
 };
 </script>
 
 <style>
 .shorten {
   width: 100%;
-  margin-top: 50px;
+  position: relative;
+  bottom: 75px;
   padding: 50px 0px;
   background: url("../assets/bg-shorten-desktop.svg") hsl(257, 27%, 26%);
   background-size: cover;
@@ -68,14 +78,36 @@ export default {
   height: 50px;
   border-radius: 10px;
   margin-left: 5%;
-  color: white;
+  color: var(--secondary);
   font-family: "Poppins";
   cursor: pointer;
 }
 /* ----- RESPONSE -----  */
 
 .response {
-  background: red;
-  height: 50px;
+  font-family: 'Poppins';
+  font-size: 0.775rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  bottom : 50px;
+  background: var(--secondary);
+  padding: 0px 25px;
+  height: 75px;
+  border-radius: 8px;
+
+}
+.short_link {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+  align-items: center;
+}
+.copy {
+  background: var(--primary);
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: var(--secondary);
 }
 </style>
